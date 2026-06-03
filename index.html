@@ -72,7 +72,6 @@
       height: 14%;
       background: #303333;
       border-radius: 0 0 8px 4px;
-      filter: blur(0.2px);
     }
 
     .machine::after {
@@ -114,26 +113,27 @@
 
     .cake-button {
       position: absolute;
-      width: 82px;
-      height: 58px;
+      width: 88px;
+      height: auto;
       border: none;
       background: transparent;
       cursor: pointer;
       z-index: 8;
-      opacity: 0.7;
+      opacity: 0.72;
       transition: 0.35s ease;
       padding: 0;
     }
 
     .cake-button:hover {
       opacity: 1;
-      transform: scale(1.12) rotate(-4deg);
+      transform: scale(1.13) rotate(-4deg);
     }
 
-    .cake-svg {
-      width: 82px;
-      height: 58px;
-      filter: blur(0.9px) drop-shadow(0 4px 5px rgba(0,0,0,0.25));
+    .cake-img {
+      width: 88px;
+      height: auto;
+      display: block;
+      filter: blur(0.25px) drop-shadow(0 4px 5px rgba(0,0,0,0.25));
     }
 
     .hint {
@@ -229,13 +229,11 @@
       }
 
       .cake-button {
-        width: 70px;
-        height: 50px;
+        width: 72px;
       }
 
-      .cake-svg {
-        width: 70px;
-        height: 50px;
+      .cake-img {
+        width: 72px;
       }
     }
   </style>
@@ -255,15 +253,7 @@
       </div>
 
       <button class="cake-button" id="cakeButton" onclick="revealContent()" aria-label="Reveal project">
-        <svg class="cake-svg" viewBox="0 0 120 82" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="18,31 63,12 103,25 55,47"
-                   fill="#d9d6ce" stroke="#555" stroke-width="6" stroke-linejoin="round"/>
-          <polygon points="18,31 55,47 55,73 18,56"
-                   fill="#e4e1d8" stroke="#555" stroke-width="6" stroke-linejoin="round"/>
-          <polygon points="55,47 103,25 99,54 55,73"
-                   fill="#636360" stroke="#555" stroke-width="6" stroke-linejoin="round"/>
-          <circle cx="64" cy="14" r="10" fill="#a9554d"/>
-        </svg>
+        <img class="cake-img" src="cake.png" alt="cake sticker">
       </button>
 
       <div class="hint" id="hint">click the cake</div>
@@ -327,20 +317,21 @@
       const cakeWidth = cake.offsetWidth;
       const cakeHeight = cake.offsetHeight;
 
-      // 벽 쪽 랜덤 위치: 너무 계단/기계 아래로 안 내려가게 제한
       const minX = posterWidth * 0.18;
       const maxX = posterWidth * 0.72;
-      const minY = posterHeight * 0.18;
-      const maxY = posterHeight * 0.53;
+      const minY = posterHeight * 0.16;
+      const maxY = posterHeight * 0.52;
 
       const x = minX + Math.random() * (maxX - minX - cakeWidth);
       const y = minY + Math.random() * (maxY - minY - cakeHeight);
 
+      const randomRotation = -10 + Math.random() * 16;
+
       cake.style.left = x + "px";
       cake.style.top = y + "px";
-      cake.style.transform = "rotate(" + (-10 + Math.random() * 16) + "deg)";
+      cake.style.transform = "rotate(" + randomRotation + "deg)";
 
-      hint.style.left = x + 8 + "px";
+      hint.style.left = x + 10 + "px";
       hint.style.top = y + cakeHeight + 8 + "px";
     }
 
