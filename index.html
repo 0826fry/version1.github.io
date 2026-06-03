@@ -8,67 +8,100 @@
   <style>
     body {
       margin: 0;
-      background: #f2f1ed;
+      background: #d8d2c6;
       color: #222;
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    .intro-space {
-      height: 90vh;
-      padding: 40px 24px;
-      box-sizing: border-box;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
+    .site-wall {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.08) 0%, transparent 18%),
+        linear-gradient(180deg, #d7d1c4 0%, #c9c2b5 100%);
     }
 
-    .faint-title {
-      font-size: 42px;
-      color: #dedcd6;
-      line-height: 1.05;
+    .wall-text {
+      position: absolute;
+      left: 8%;
+      bottom: 18%;
+      font-size: clamp(36px, 8vw, 96px);
+      line-height: 0.9;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: rgba(90, 86, 80, 0.18);
+      filter: blur(1.2px);
     }
 
-    .cake-zone {
-      height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .wall-text span {
+      color: rgba(150, 45, 35, 0.78);
+      filter: none;
+    }
+
+    .stair-block {
+      position: absolute;
+      right: -8%;
+      bottom: -5%;
+      width: 58%;
+      height: 32%;
+      background: #3b3b3b;
+      transform: skewX(-18deg);
+      opacity: 0.95;
+    }
+
+    .stair-shadow {
+      position: absolute;
+      right: 0;
+      bottom: 25%;
+      width: 52%;
+      height: 9%;
+      background: rgba(0,0,0,0.18);
+      transform: skewX(-18deg);
+      filter: blur(4px);
     }
 
     .cake-button {
+      position: absolute;
+      right: 23%;
+      bottom: 33%;
+      width: 42px;
+      height: 42px;
       border: none;
       background: transparent;
       cursor: pointer;
-      font-size: 42px;
-      opacity: 0.35;
-      transition: 0.4s ease;
+      font-size: 34px;
+      opacity: 0.65;
+      transform: rotate(-6deg);
+      transition: 0.35s ease;
     }
 
     .cake-button:hover {
       opacity: 1;
-      transform: scale(1.15);
+      transform: rotate(-6deg) scale(1.18);
     }
 
-    .hint {
-      text-align: center;
-      color: #aaa;
-      font-size: 13px;
-      margin-top: 12px;
+    .tiny-hint {
+      position: absolute;
+      right: 20%;
+      bottom: 29%;
+      font-size: 12px;
+      color: rgba(60,60,60,0.35);
       opacity: 0;
-      transition: 0.5s ease;
+      transition: 0.4s ease;
     }
 
-    .cake-wrap:hover .hint {
+    .cake-button:hover + .tiny-hint {
       opacity: 1;
     }
 
     .content {
       max-width: 820px;
       margin: 0 auto;
-      padding: 80px 24px 120px;
+      padding: 90px 24px 130px;
       opacity: 0;
-      transform: translateY(40px);
-      transition: 1.2s ease;
+      transform: translateY(50px);
+      transition: 1s ease;
       pointer-events: none;
     }
 
@@ -81,7 +114,7 @@
     h1 {
       font-size: 52px;
       line-height: 1.05;
-      margin: 0 0 28px;
+      margin: 0 0 26px;
     }
 
     .question {
@@ -104,7 +137,7 @@
     .photo-placeholder {
       width: 100%;
       height: 400px;
-      background: #d8d6d1;
+      background: #c9c2b5;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -121,30 +154,52 @@
     }
 
     .ending {
-      border-top: 1px solid #b78b84;
+      border-top: 1px solid #9b6b63;
       padding-top: 34px;
       color: #8b3d35;
       font-size: 22px;
       line-height: 1.5;
+    }
+
+    @media (max-width: 700px) {
+      .wall-text {
+        left: 7%;
+        bottom: 22%;
+      }
+
+      .cake-button {
+        right: 18%;
+        bottom: 34%;
+        font-size: 30px;
+      }
+
+      .tiny-hint {
+        right: 14%;
+        bottom: 30%;
+      }
+
+      .stair-block {
+        width: 75%;
+        height: 30%;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="intro-space">
-    <div class="faint-title">
-      Invisible<br>
-      Until Noticed
+  <section class="site-wall">
+    <div class="wall-text">
+      INVISIBLE<br>
+      UNTIL <span>NOTICED</span>
     </div>
-  </div>
 
-  <div class="cake-zone">
-    <div class="cake-wrap">
-      <button class="cake-button" onclick="revealContent()">🍰</button>
-      <div class="hint">click the cake</div>
-    </div>
-  </div>
+    <div class="stair-shadow"></div>
+    <div class="stair-block"></div>
+
+    <button class="cake-button" onclick="revealContent()">🍰</button>
+    <div class="tiny-hint">click</div>
+  </section>
 
   <main class="content" id="content">
 
@@ -157,7 +212,7 @@
 
     <section>
       <h2>Site</h2>
-      <div class="photo-placeholder">Cake-only photo will be added here</div>
+      <div class="photo-placeholder">Cake-only wall photo will be added here</div>
       <p>
         A small cake sticker was already placed in a quiet corner of the staircase.
         Most people pass through this site without noticing it.
@@ -195,9 +250,10 @@
     function revealContent() {
       const content = document.getElementById("content");
       content.classList.add("visible");
+
       setTimeout(() => {
         content.scrollIntoView({ behavior: "smooth" });
-      }, 300);
+      }, 350);
     }
   </script>
 
