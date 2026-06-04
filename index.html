@@ -114,12 +114,11 @@
     .cake-button {
       position: absolute;
       width: 88px;
-      height: auto;
       border: none;
       background: transparent;
       cursor: pointer;
       z-index: 8;
-      opacity: 0.72;
+      opacity: 0.74;
       transition: 0.35s ease;
       padding: 0;
     }
@@ -151,7 +150,7 @@
     }
 
     .content {
-      max-width: 820px;
+      max-width: 920px;
       margin: 0 auto;
       padding: 90px 24px 130px;
       opacity: 0;
@@ -169,45 +168,64 @@
     }
 
     h1 {
-      font-size: 52px;
+      font-size: 56px;
       line-height: 1.05;
-      margin: 0 0 26px;
+      margin: 0 0 14px;
+    }
+
+    .subtitle-ko {
+      font-size: 24px;
+      color: #8b3d35;
+      margin-bottom: 56px;
+      font-weight: 500;
+      line-height: 1.5;
     }
 
     .question {
-      font-size: 24px;
+      font-size: 23px;
       line-height: 1.5;
       color: #8b3d35;
-      margin-bottom: 100px;
-      max-width: 680px;
+      margin-bottom: 16px;
+      max-width: 720px;
+    }
+
+    .question-ko {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 110px;
+      max-width: 720px;
     }
 
     section {
-      margin-bottom: 110px;
+      margin-bottom: 120px;
     }
 
     h2 {
-      font-size: 28px;
+      font-size: 30px;
       margin-bottom: 24px;
     }
 
-    .photo-placeholder {
+    .project-img {
       width: 100%;
-      height: 400px;
+      max-height: 620px;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
+      margin-bottom: 24px;
       background: #d8d6d1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #777;
-      font-size: 18px;
-      margin-bottom: 22px;
-      border-radius: 4px;
     }
 
     p {
       font-size: 18px;
       line-height: 1.7;
-      max-width: 660px;
+      max-width: 700px;
+      margin-bottom: 14px;
+    }
+
+    .ko {
+      color: #666;
+      line-height: 1.85;
     }
 
     .ending {
@@ -215,7 +233,8 @@
       padding-top: 34px;
       color: #8b3d35;
       font-size: 22px;
-      line-height: 1.5;
+      line-height: 1.6;
+      max-width: 780px;
     }
 
     @media (max-width: 700px) {
@@ -234,6 +253,14 @@
 
       .cake-img {
         width: 72px;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      .subtitle-ko {
+        font-size: 20px;
       }
     }
   </style>
@@ -263,42 +290,67 @@
   <main class="content" id="content">
     <h1>Invisible Until Noticed</h1>
 
+    <div class="subtitle-ko">
+      보이지 않는 것이 아니라,<br>
+      보지 않았던 것이다.
+    </div>
+
     <div class="question">
       How do people notice small spaces?<br>
       This project observes what happens when an overlooked corner gradually changes.
     </div>
 
+    <div class="question-ko">
+      사람들은 작은 공간을 어떻게 인식할까?<br>
+      이 프로젝트는 사람들이 지나치던 계단 구석이 조금씩 변화할 때 어떤 일이 일어나는지 관찰한다.
+    </div>
+
     <section>
-      <h2>Site</h2>
-      <div class="photo-placeholder">Cake-only wall photo will be added here</div>
+      <h2>Site / 장소</h2>
+      <img class="project-img" src="site-before.jpg" alt="Original cake sticker in the staircase corner">
       <p>
         A small cake sticker was already placed in a quiet corner of the staircase.
         Most people pass through this site without noticing it.
       </p>
-    </section>
-
-    <section>
-      <h2>Intervention</h2>
-      <div class="photo-placeholder">QR code and dessert stickers photo will be added here</div>
-      <p>
-        I added a QR code and new dessert stickers near the original cake sticker.
-        The intervention slowly changes the corner from something unnoticed into something people might recognize.
+      <p class="ko">
+        계단의 조용한 구석에는 이미 작은 케이크 스티커가 붙어 있었다.
+        대부분의 사람들은 이 공간을 인식하지 못한 채 지나간다.
       </p>
     </section>
 
     <section>
-      <h2>Instagram Account</h2>
-      <div class="photo-placeholder">Instagram account screenshot will be added here</div>
+      <h2>Intervention / 개입</h2>
+      <img class="project-img" src="intervention.jpg" alt="QR code and dessert stickers added near the original cake sticker">
+      <p>
+        I added a QR code and new dessert stickers near the original cake sticker.
+        The intervention slowly changes the corner from something unnoticed into something people might recognize.
+      </p>
+      <p class="ko">
+        나는 기존 케이크 스티커 근처에 QR 코드와 새로운 디저트 스티커를 추가했다.
+        이 개입은 아무도 주목하지 않던 구석을 사람들이 알아볼 수 있는 공간으로 조금씩 변화시킨다.
+      </p>
+    </section>
+
+    <section>
+      <h2>Instagram Account / 인스타그램 계정</h2>
+      <img class="project-img" src="instagram.jpg" alt="Instagram account documenting the project">
       <p>
         The QR code leads to an Instagram account that works as an ongoing gallery.
         People can follow the process and choose what dessert should be added next.
+      </p>
+      <p class="ko">
+        QR 코드는 진행 중인 갤러리처럼 운영되는 인스타그램 계정으로 연결된다.
+        사람들은 그곳에서 프로젝트의 과정을 따라가고, 다음에 어떤 디저트가 추가될지 선택할 수 있다.
       </p>
     </section>
 
     <section>
       <p class="ending">
-        This project is not about the stickers themselves.
+        This project is not about the stickers themselves.<br>
         It is about the moment when an unnoticed corner becomes a place.
+        <br><br>
+        이 프로젝트는 스티커 자체에 관한 것이 아니다.<br>
+        사람들이 무심코 지나치던 작은 구석이 하나의 장소가 되는 순간에 관한 것이다.
       </p>
     </section>
   </main>
