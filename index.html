@@ -249,20 +249,48 @@
 
     @media (max-width: 700px) {
       .poster {
-        inset: 4vh 5vw;
+        inset: 3vh 1.5vw;
+      }
+
+      .wall-side {
+        width: 14%;
+      }
+
+      .wall-panel {
+        left: 14%;
+        width: 82%;
+        height: 56%;
+      }
+
+      .vertical-line {
+        left: 32%;
+        width: 26px;
+      }
+
+      .machine {
+        left: 32%;
+        width: 58%;
       }
 
       .wall-text {
         left: 7%;
-        top: 43%;
+        top: 45%;
+      }
+
+      .wall-text .invisible {
+        font-size: 56px;
+      }
+
+      .wall-text .noticed {
+        font-size: 62px;
       }
 
       .cake-button {
-        width: 72px;
+        width: 78px;
       }
 
       .cake-img {
-        width: 72px;
+        width: 78px;
       }
 
       h1 {
@@ -384,9 +412,9 @@
       const cakeWidth = cake.offsetWidth;
       const cakeHeight = cake.offsetHeight;
 
-      const minX = posterWidth * 0.18;
-      const maxX = posterWidth * 0.72;
-      const minY = posterHeight * 0.16;
+      const minX = posterWidth * 0.14;
+      const maxX = posterWidth * 0.78;
+      const minY = posterHeight * 0.13;
       const maxY = posterHeight * 0.52;
 
       const x = minX + Math.random() * (maxX - minX - cakeWidth);
